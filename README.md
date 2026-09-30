@@ -15,7 +15,6 @@ NanoURL allows users to create short URLs, manage their links, track click analy
 - 👤 User registration and login
 - 📊 Click analytics
 - ⚡ Redis caching for frequently accessed URLs
-- 🛡️ Rate limiting
 - 📱 Responsive React frontend
 - 🐳 Docker-ready backend
 - 📡 RESTful APIs
