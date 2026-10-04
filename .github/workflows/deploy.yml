@@ -29,10 +29,10 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
     
     - name: Build Docker Image
-      run : docker build -t ${{secrets.DOCKER_USERNAME}}/url-shortener-sb:latest
+      run : docker build -t ${{secrets.DOCKERHUB_USERNAME}}/url-shortener-sb:latest
     
     - name: Push Image to Docker hub
-      run : docker push ${{secrets.DOCKER_USERNAME}}/url-shortener-sb:latest
+      run : docker push ${{secrets.DOCKERHUB_USERNAME}}/url-shortener-sb:latest
       
     
     - name: SSH and Deploy to EC2
@@ -45,7 +45,7 @@ jobs:
             docker stop nanourl-backend || true
             docker rm nanourl-backend || true
           
-            docker pull ${{ secrets.DOCKER_USERNAME }}/url-shortener-sb:latest
+            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/url-shortener-sb:latest
           
             docker run -d \
               --name nanourl-backend \  
@@ -56,6 +56,6 @@ jobs:
               -e "DATABASE_DIALECT=org.hibernate.dialect.PostgreSQLDialect" \
               -e "JWT_SECRET=${{ secrets.JWT_SECRET }}" \
               -e "FRONTEND_URL=${{ secrets.FRONTEND_URL }}" \
-              ${{ secrets.DOCKER_USERNAME }}/url-shortener-sb:latest
+              ${{ secrets.DOCKERHUB_USERNAME  }}/url-shortener-sb:latest
     
 
