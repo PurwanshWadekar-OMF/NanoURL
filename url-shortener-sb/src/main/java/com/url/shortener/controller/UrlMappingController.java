@@ -26,6 +26,10 @@ public class UrlMappingController {
 
     // {"originalUrl":"https://example.com"}
 //    https://abc.com/QN7XOa0a --> https://example.com
+    @GetMapping("/Hello")
+    public String testing(){
+        return "Hello";
+    }
 
     @PostMapping("/shorten")
     @PreAuthorize("hasRole('USER')")
